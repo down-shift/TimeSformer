@@ -296,7 +296,7 @@ class VisionTransformer(nn.Module):
             x = rearrange(x, '(b t) n m -> b t n m',b=B,t=T)
             x = torch.mean(x, 1) # averaging predictions for every frame
 
-        x = self.norm(x)
+        # x = self.norm(x)
         return x[:, 0]
 
     def forward(self, x):
