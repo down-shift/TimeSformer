@@ -296,12 +296,12 @@ class VisionTransformer(nn.Module):
             x = rearrange(x, '(b t) n m -> b t n m',b=B,t=T)
             x = torch.mean(x, 1) # averaging predictions for every frame
 
-        # x = self.norm(x)
+        x = self.norm(x)
         return x[:, 0]
 
     def forward(self, x):
         x = self.forward_features(x)
-        # x = self.head(x)
+        x = self.head(x)
         return x
 
 def _conv_filter(state_dict, patch_size=16):
